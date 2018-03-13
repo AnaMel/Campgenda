@@ -10,11 +10,7 @@
     padding: 10px; }
   .modalWindow .modalWindowContent div {
     width: 100%;
-    margin-bottom: 30px; }
-  form {
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center; } }
+    margin-bottom: 30px; } }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 768px) {
@@ -25,7 +21,10 @@
     max-width: 60%; }
   input[select="province"] {
     max-width: 60%;
-    text-align: right; } }
+    text-align: right; }
+  form p,
+  form select {
+    margin-right: 10px; } }
 
 /* Landscape phones and down */
 @media (max-width: 574px) {
@@ -38,4 +37,21 @@
     min-width: initial; }
   .modalWindow {
     width: 100%;
-    padding: 0; } }
+    padding: 0;
+    left: 0;
+    top: 0; }
+    .modalWindow .modalWindowContent {
+      margin-top: 60px; }
+  form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+    form p,
+    form select,
+    form input {
+      margin-bottom: 10px;
+      width: 100%; } }

@@ -164,14 +164,14 @@ html {
   font-size: 10px; }
 
 body {
-  color: snow;
+  color: black;
   font-size: 1.6rem;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Raleway', sans-serif;
   letter-spacing: 0.8px; }
 
 h1 {
   text-transform: uppercase;
-  font-family: 'Bungee', cursive; }
+  font-family: 'Raleway', sans-serif; }
 
 a {
   text-decoration: none;
@@ -180,7 +180,8 @@ a {
     color: snow; }
 
 input,
-button {
+button,
+select {
   -moz-appearance: none;
   -webkit-appearance: none;
   border: none;
@@ -218,36 +219,42 @@ a.goBack:hover, a.goBack:focus {
 
 #bottomLayer {
   z-index: 6999;
-  top: 40px; }
+  top: 200px; }
 
 main {
-  background-color: #7cb342;
-  min-height: 80vh;
-  height: 100%;
+  background-image: url("../images/explore.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
   position: relative; }
+  @media (max-width: 480px) {
+    main {
+      background-image: url("../images/exploreResponsive.png"); } }
 
 .wrapper {
   max-width: 1280px;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   padding: 50px 0 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between; }
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
 
 section {
-  -ms-flex-preferred-size: 60%;
-  flex-basis: 60%;
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
-  flex-direction: column; }
+  flex-direction: column;
+  margin-top: 175px; }
 
 aside {
   position: fixed;
@@ -265,43 +272,94 @@ aside {
     min-width: 274px; }
 
 form {
-  padding: 25px 0;
+  width: 80%;
+  padding: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(216, 215, 194, 0.7)), to(rgba(53, 132, 145, 0.7)));
+  background-image: -webkit-linear-gradient(rgba(216, 215, 194, 0.7), rgba(53, 132, 145, 0.7));
+  background-image: -o-linear-gradient(rgba(216, 215, 194, 0.7), rgba(53, 132, 145, 0.7));
+  background-image: linear-gradient(rgba(216, 215, 194, 0.7), rgba(53, 132, 145, 0.7));
+  -webkit-box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -ms-flex-line-pack: baseline;
-  align-content: baseline;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between; }
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: #7cb342; }
+  form h1 {
+    margin-bottom: 25px;
+    text-align: center; }
+  form > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
   form input,
   form select,
   form p {
-    margin: 0 10px 50px 0;
-    font-size: 2rem; }
+    margin: 0 5px 50px 0;
+    display: inline-block;
+    margin-right: 20px; }
+  form p {
+    font-size: 3.5rem;
+    color: white; }
   form select {
-    padding: 10px 0; }
-  form input[name="city"],
-  form select[name="province"] {
-    max-width: 150px; }
-  form input[name="address"] {
-    min-width: 450px; }
+    padding: 10px 0;
+    height: 60px; }
+  form input[type="text"] {
+    width: 375px;
+    height: 60px; }
   form input[type="submit"] {
+    font-size: 2rem;
     background-color: #7cb342;
-    font-family: 'Bungee', cursive;
-    border: 2px solid snow;
+    height: 60px;
     color: snow;
-    padding: 10px 40px;
+    padding: 11px 20px;
     justify-self: flex-end;
     -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
-    transition: all 0.3s; }
+    transition: all 0.3s;
+    border-radius: 5px; }
     form input[type="submit"]:hover {
-      border: 2px solid #cddc39;
       background-color: snow;
       color: #7cb342; }
+
+.select-style {
+  width: 160px;
+  border-radius: 3px; }
+
+.select-style select {
+  padding: 5px 10px;
+  width: 130%;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: transparent;
+  background-image: none; }
+
+.select-style select:focus {
+  outline: none; }
+
+.landingPage {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row; }
 
 .destinationOption {
   -ms-flex-wrap: wrap;
@@ -314,44 +372,44 @@ form {
   -ms-flex-pack: justify;
   justify-content: space-between; }
   .destinationOption div {
-    -ms-flex-preferred-size: 45%;
-    flex-basis: 45%;
+    -ms-flex-preferred-size: 40%;
+    flex-basis: 40%;
     margin-bottom: 50px;
     border: 10px solid #ffffff;
-    -webkit-box-shadow: 10px 10px #000000;
-    box-shadow: 10px 10px #000000;
-    background-image: url("../images/forest.jpg");
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(53, 132, 145, 0.7)), to(rgba(216, 215, 194, 0.7)));
+    background-image: -webkit-linear-gradient(rgba(53, 132, 145, 0.7), rgba(216, 215, 194, 0.7));
+    background-image: -o-linear-gradient(rgba(53, 132, 145, 0.7), rgba(216, 215, 194, 0.7));
+    background-image: linear-gradient(rgba(53, 132, 145, 0.7), rgba(216, 215, 194, 0.7));
+    -webkit-box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
     background-position: center top;
-    background-size: cover; }
+    background-size: cover;
+    padding: 20px; }
     .destinationOption div button {
+      padding: 20px 0;
+      font-size: 2.5rem;
+      color: WHITE;
+      text-align: center;
       margin-bottom: 20px;
-      width: 100%;
       background-color: #7cb342;
-      text-align: left; }
-    .destinationOption div p {
-      margin: 15px 0 15px 20px;
+      border-radius: 5px;
+      width: 50%;
+      -ms-flex-item-align: center;
+      align-self: center;
+      -webkit-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+      border-radius: 5px; }
+      .destinationOption div button:hover {
+        background-color: snow;
+        color: #7cb342; }
+    .destinationOption div h2 {
+      font-size: 3.1rem; }
+    .destinationOption div h2, .destinationOption div p, .destinationOption div h3 {
       padding: 10px 12px;
-      text-shadow: 1px 1px #000000;
-      font-size: 1.8rem;
-      background-color: rgba(0, 0, 0, 0.4); }
-  .destinationOption .option {
-    font-size: 2.5rem;
-    color: #000000;
-    text-align: center;
-    text-shadow: 2px 2px 1px #fff;
-    font-family: 'Oswald', sans-serif;
-    line-height: 3rem;
-    margin: 20px;
-    padding: 10px;
-    background-color: yellow;
-    -webkit-box-shadow: 4px 4px #000000;
-    box-shadow: 4px 4px #000000; }
-    .destinationOption .option:hover, .destinationOption .option:focus {
-      background-color: #000000;
-      color: #ffffff;
-      -webkit-box-shadow: 4px 4px #ffffff;
-      box-shadow: 4px 4px #ffffff;
-      text-shadow: 2px 2px 1px yellow; }
+      color: white;
+      line-height: 2; }
 
 .modalWindow {
   position: fixed;
@@ -396,6 +454,23 @@ form {
         margin: 0 auto;
         background-color: rgba(255, 255, 255, 0.3);
         padding: 10px 5px; }
+
+.night {
+  background-image: url("../images/explore2.jpg");
+  background-size: cover; }
+
+.itemContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+.direction {
+  display: inline-block;
+  min-height: 110px; }
 
 /* Portrait tablet and small desktops */
 @media (max-width: 940px) {

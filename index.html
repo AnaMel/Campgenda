@@ -7,50 +7,44 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <!-- <link rel="icon" href="assets/favicon.ico" type="image/x-icon" /> -->
     <title>Campgenda</title>
-    <link href="https://fonts.googleapis.com/css?family=Bungee|Oswald:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    <header>
+    <!-- <header>
         <a href="index.html"><img src="images/logo.png" alt="Brand Logo" class="brandLogo"></a>
-    </header>
+    </header> -->
     <main>
         <div class="wrapper">
             <section class="landingPage">
-                <h1>Search For Trails:</h1>
                 <form>
-                    <p>I'm looking for </p>
-                    <select name="activity">
-                        <option value="hiking">hiking</option>
-                        <option value="camping">camping</option>
-                    </select>
-                    <p>sites in</p>
-                    <input type="text" name="city" placeholder="city">
-                    <select name="province">
-                        <option value="Ontario">Ontario</option>
-                        <option value="Quebec">Quebec</option>
-                        <option value="British Columbia">British Columbia</option>
-                        <option value="Alberta">Albert</option>
-                        <option value="Nova Scotia">Nova Scotia</option>
-                        <option value="Saskatchewan">Saskatchewan</option>
-                        <option value="Manitoba">Manitoba</option>
-                    </select>
-                    <p>within</p>
-                    <select name="radius">
-                        <option value="5">5 km</option>
-                        <option value="10">10 km</option>
-                        <option value="20">20 km</option>
-                        <option value="30">30 km</option>
-                        <option value="40">40 km</option>
-                        <option value="50">50 km</option>
-                    </select>
-                    <p>of</p>
-                    <input type="text" name="address" placeholder="address">
-                    <input type="submit" name="" id="firstInput" value="Next">
+                    <div>
+                        <p>Go</p>
+                        <select name="activity" class="select-style">
+                            <option value="hiking">hiking</option>
+                            <option value="camping">camping</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>within</p>
+                        <select name="radius" class="select-style">
+                            <option value="5">5 km</option>
+                            <option value="10">10 km</option>
+                            <option value="20">20 km</option>
+                            <option value="30">30 km</option>
+                            <option value="40">40 km</option>
+                            <option value="50">50 km</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>of</p>
+                        <input type="text" name="fullAddress" id="pac-input"/>
+                    </div>
+                    <!-- <input type="text" name="address" placeholder="address"> -->
+                    <input type="submit" name="" id="firstInput" value="Find an Adventure">
                 </form>
             </section>
             <section class="destinationOption hide">
-                <h1>Choose A Destination For Info:</h1>
                 <div class="modalWindow hide">
                     <a href="#">
                         <i class="fa fa-times"></i>
@@ -67,18 +61,19 @@
             
                 </div>
             </section>
-            <aside>
+            <!-- <aside>
                 <img src="images/smoresCracker.png" alt="" id="topLayer" class="hide">
                 <img src="images/smoresMarshmallow.png" alt="" id="marshLayer" class="hide">
                 <img src="images/smoresChocolate.png" alt="" id="chocLayer" class="hide">
                 <img src="images/smoresCracker.png" alt="" id="bottomLayer">
-            </aside>
+            </aside> -->
         </div>
     </main>
     <!-- Font Awesome script -->
     <script src="https://use.fontawesome.com/f45c9c96e9.js"></script>
     <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='crossorigin='anonymous'></script>
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgYv_k_LnOl6L13nyJDk2EaYjSITw7KrU&libraries=places"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

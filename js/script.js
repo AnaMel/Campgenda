@@ -1,3 +1,5 @@
+
+
 // Create global object to contain variables and functions
 const userInput = {};
 
@@ -24,24 +26,61 @@ userInput.initFirebase = () => {
 // Function is called on form submission
 // Once called, Google Maps API is called using retrieved user input
 userInput.retrieveInputValues = function() {
-    userInput.province = $('select[name=province]').val();
-    userInput.city = $('input[name=city]').val();
+    // userInput.province = $('select[name=province]').val();
+    // userInput.city = $('input[name=city]').val();
     userInput.radius = userInput.kilometersToMiles($('select[name=radius]').val());
     userInput.activity = $('select[name=activity]').val();
-    userInput.address = $('input[name=address]').val();
+    // userInput.address = $('input[name=address]').val();
+    userInput.fullAddress=$('input[name=fullAddress]').val();
     userInput.currentDate = new Date(); 
-    userInput.getCoordinates(userInput.address, userInput.city, userInput.province);
+    userInput.getCoordinates(userInput.fullAddress);
 }
+
+
+// var input = (document.getElementById('pac-input'));
+// var autocomplete = new google.maps.places.Autocomplete(input);
+
+let autocomplete, input_el, place_changed_trigger_func;
+
+input_el = (document.getElementById('pac-input'));
+place_changed_trigger_func = function() {
+  let place = autocomplete.getPlace();
+};
+autocomplete = new google.maps.places.Autocomplete(input_el, {types: ["geocode"]});
+autocomplete.setComponentRestrictions(
+    {'country': ['ca']});
+google.maps.event.addListener(autocomplete, 'place_changed', place_changed_trigger_func);
+
+// userInput.getFullAddress = function() {
+//     userInput.fullAddress=$('input[name=fullAddress]').val();
+//     userInput.callGM(userInput.fullAddress);
+// }
+// userInput.callGM = (address) => {
+//     return $.ajax({
+//         url: "https://maps.googleapis.com/maps/api/place/autocomplete/json?",
+//         method: 'GET',
+//         dataType: 'json',
+//         data: {
+//             input: `${address}`,
+//             key: 'AIzaSyDs2qDo1TXxXUSYjgnY23haEhggJvyo_Nc',
+//         }
+
+
+//     })
+//     .then(function (res) {
+//         console.log(res);
+//     });
+// }
 
 // Create AJAX request to Google Maps API 
 // to retrieve coordinates based on user's address
-userInput.getCoordinates = (address, city, province) => {
+userInput.getCoordinates = (place) => {
     return $.ajax({
         url: "https://maps.googleapis.com/maps/api/geocode/json?",
         method: 'GET',
         dataType: 'json',
         data: {
-            address: `${address}, ${city}, ${province}`,
+            address: `${place}`,
             key: 'AIzaSyDNBpAAUuUkRyioDLQUQW_DZYIb1PiY85Q'
         }
     })
@@ -78,6 +117,7 @@ userInput.getLocationBasedOnUserInput = (lat, long, radius, activity) => {
         userInput.destinationLocations = res.places;
     // Once promise is resolved
     // call function to display returned information on the screen
+    // $('main').addClass('night');
         userInput.displayOptions(res.places);
     });
 };
@@ -112,13 +152,15 @@ userInput.displayOptions = (locations) => {
     // display them on the page
     else {
         for (i = 0; i < activitiesArray.length; i++) {
-            const name = $(`<button class=option id="${activitiesArray[i].place_id}">`).text(activitiesArray[i].name);
-            const direction = $('<p>').text(activitiesArray[i].description);
-            const length = $('<p>').text(`Trail Length is ${activitiesArray[i].length} km`);
-            const trailContainer = $(`<div class=itemContainer${activitiesArray[i].place_id}>`).append(name, length, direction);
+            const button = $(`<button class=option id="${activitiesArray[i].place_id}">`).text(`Learn More`);
+            const name = $('<h2>').text(activitiesArray[i].name);
+            const direction = $('<p class=direction>').text(activitiesArray[i].description);
+            const length = $('<p>').text(`Trail Length is ${activitiesArray[i].length} miles`);
+            const trailContainer = $(`<div class=itemContainer itemContainer${activitiesArray[i].place_id}>`).append(name,length,direction, button);
             $('.destinationOption').append(trailContainer);
             $('.landingPage').fadeOut(function() {
                 $('.destinationOption').fadeIn('slow');
+                
             });
         }
     }
@@ -336,6 +378,10 @@ userInput.events = function () {
 $(function () {
     userInput.initFirebase();
     userInput.events();
+    $('.fullAddress').on('keypress', function() {
+        userInput.getFullAddress();
+    });
+
 // On form submission..
     $('form').on('submit', function (event) {
         event.preventDefault();
