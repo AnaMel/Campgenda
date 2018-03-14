@@ -305,7 +305,7 @@ const getBirdsBasedOnLocation = (sightSpot) => {
 userInput.displayBirdsInRegion = (birds) => {
     if (birds.length > 0) {
         birds.forEach((bird, i) => {
-            const name = $('<h3>').text(bird);
+            const name = $('<h3>').text(`${bird} has recently been seen in the area.`);
             const birdContainer = $(`<div class="${bird.replace(' ','-').toLowerCase()}">`).append(name);
             $('.modalWindowContent').append(birdContainer);
             getBirdSoundsBasedOnName(bird);

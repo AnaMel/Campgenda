@@ -94,14 +94,18 @@
     }
     .modalWindowContent {
         margin-bottom: 20px;
-        div {
+        > div {
             float: left;
-            width: calc(45%);
-            margin-right: 25px;
+            width: calc(50% - 25px);
+            margin-right: 50px;
+            margin-top: 50px;
+            &:nth-child(even) {
+                margin-right: 0;
+            }
             h3 {
                 text-align: center;
                 margin-top: 10px;
-                margin-bottom: 20px;
+                margin-bottom: 5px;
                 text-shadow: 2px 2px 1px black;
             }
             div.soundDisplay {
